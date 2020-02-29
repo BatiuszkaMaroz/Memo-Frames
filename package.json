@@ -1,0 +1,14 @@
+{
+  "name": "memoframes",
+  "version": "1.0.0",
+  "description": "A simple app to help you save your memories as a single image frames :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Batiuszka Maroz",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
