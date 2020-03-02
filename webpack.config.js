@@ -36,8 +36,31 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
+        //SVG loader
         test: /\.svg$/,
         loader: 'svg-sprite-loader',
+      },
+      {
+        //Images loader
+        test: /\.(png|jpg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: (url, resourcePath, context) => {
+            //url is a name of file
+            //resourcePath is an absolute path
+            //context is THIS folder
+
+            // To get relative path you can use
+            // const relativePath = path.relative(context, resourcePath);
+
+            if (/icon.*\.png$/.test(url)) {
+              return `images/icons/${url}`;
+            }
+
+            return `images/${url}`;
+          },
+        },
       },
     ],
   },
