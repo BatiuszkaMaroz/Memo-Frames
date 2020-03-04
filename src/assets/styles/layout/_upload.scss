@@ -1,0 +1,21 @@
+.upload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--uploadZi);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  //   FOR TESTING PURPOSES
+  background-color: var(--main2);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

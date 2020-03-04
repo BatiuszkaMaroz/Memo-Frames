@@ -1,25 +1,22 @@
 .navigation {
-  --size: 7rem;
-  --navBot: 2rem;
-  --navLeft: 2rem;
-
   position: fixed;
   bottom: var(--navBot);
   left: var(--navLeft);
   z-index: 100;
-  width: var(--size);
-  height: var(--size);
+  width: var(--navSize);
+  height: var(--navSize);
   border-radius: var(--radius1);
+  z-index: var(--navZi);
 
   @include respond(desktop) {
-    --size: 6rem;
+    --navSize: 6rem;
   }
 
   &__button {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1000;
     height: 100%;
     width: 100%;
     display: flex;
@@ -87,21 +84,14 @@
     height: 100%;
     border-radius: inherit;
     transition-timing-function: var(--cubic1);
-    z-index: 100;
 
-    &--iconbg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      background-color: var(--main4);
-      z-index: 100;
-    }
+    // &--close {
+    //   height: 100%;
+    //   width: 100%;
+    //   border-radius: inherit;
+    //   background-color: var(--red1);
+    //   transform: translateX(50%);
+    // }
 
     & .icon {
       --icon-size: 3rem;
@@ -117,6 +107,20 @@
     &.op--help {
       transition: 0.15s linear;
     }
+  }
+
+  &__icon--background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--main4);
+    z-index: 500;
   }
 }
 

@@ -1,15 +1,16 @@
 .backdrop {
-  --centerPosition: calc(50vw - var(--navLeft) - (var(--size) / 2));
+  --centerPosition: calc(50vw - var(--navLeft) - (var(--navSize) / 2));
 
-  position: absolute;
+  display: none;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
+  width: var(--navSize);
+  height: var(--navSize);
+  border-radius: 10px;
   background-color: var(--main2);
-  z-index: 1;
+  z-index: var(--backdropZi);
   overflow: hidden;
 
   animation-duration: 0.75s;
