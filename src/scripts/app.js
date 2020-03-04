@@ -1,13 +1,26 @@
 //Bundled Sass
-import '../styles/main.scss';
+import '../assets/styles/main.scss';
 
-//Images + Icons
-const IMAGES = require.context('../images', true, /\.(png|jpg)$/);
+//Images
+const IMAGES = require.context('../assets/images', true, /\.(png|jpg)$/);
 
 //SVG Defs
-import SYMBOL_DEFS from '../images/symbol-defs.svg';
+import SYMBOL_DEFS from '../assets/images/symbol-defs.svg';
 
 //Preventing onload animations
 window.addEventListener('load', () => {
   document.querySelector('.preload').classList.remove('preload');
 });
+
+//Setup of service worker
+import './utils/sw-setup';
+
+//Post fetcher
+import './model/posts-model';
+
+//Creation of indexed Database
+import { createDB } from './utils/idb';
+
+createDB(['fetched-posts']);
+
+import './view/menu-controller';
