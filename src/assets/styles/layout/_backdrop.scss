@@ -1,26 +1,25 @@
 .backdrop {
   --centerPosition: calc(50vw - var(--navLeft) - (var(--navSize) / 2));
-
   display: none;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
   width: var(--navSize);
   height: var(--navSize);
-  border-radius: 10px;
+  border-radius: var(--radius1);
   background-color: var(--main2);
   z-index: var(--backdropZi);
   overflow: hidden;
 
-  animation-duration: 0.75s;
-  animation-timing-function: ease-out;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
   animation-fill-mode: both;
 }
 
 @keyframes open {
   0% {
-    transform: translateX(0);
+    z-index: var(--backdropZiOpening);
+    transform: translateX(0) scale(1);
   }
   30% {
     transform: translateX(var(--centerPosition)) scale(1);
@@ -29,18 +28,22 @@
     transform: translateX(var(--centerPosition)) scale(1);
   }
   100% {
-    transform: translateX(var(--centerPosition)) scale(50);
+    transform: translateX(var(--centerPosition)) scale(25);
   }
 }
 
 @keyframes close {
   0% {
-    transform: translateX(var(--centerPosition)) scale(50);
+    transform: translateX(var(--centerPosition)) scale(25);
   }
-  75% {
+  60% {
+    transform: translateX(var(--centerPosition)) scale(1);
+  }
+  70% {
     transform: translateX(var(--centerPosition)) scale(1);
   }
   100% {
-    transform: translateX(0);
+    z-index: var(--backdropZiOpening);
+    transform: translateX(0) scale(1);
   }
 }

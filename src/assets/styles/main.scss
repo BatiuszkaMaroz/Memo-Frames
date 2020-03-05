@@ -6,10 +6,12 @@
 
 @import './themes/theme';
 
-@import './layout/header';
-@import './layout/navigation';
-@import './layout/list';
 @import './layout/backdrop';
+@import './layout/header';
+@import './layout/help';
+@import './layout/list';
+@import './layout/navigation';
 @import './layout/upload';
 
+@import './components/close-button';
 @import './components/post';

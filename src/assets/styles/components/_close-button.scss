@@ -1,0 +1,21 @@
+.close__button {
+  position: absolute;
+  top: var(--navBot);
+  right: var(--navLeft);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--navSize);
+  width: var(--navSize);
+  border: none;
+  border-radius: var(--radius1);
+  outline: none;
+  background-color: var(--main3);
+  transition: 0.1s ease-out;
+
+  & .icon {
+    height: var(--icon-size);
+    width: var(--icon-size);
+    fill: var(--main4);
+  }
+}

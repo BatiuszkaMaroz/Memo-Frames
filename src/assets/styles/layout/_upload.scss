@@ -9,13 +9,122 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  //   FOR TESTING PURPOSES
-  background-color: var(--main2);
+  pointer-events: none;
 
   &__form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 30rem;
+
+    & > *:not(:last-child) {
+      margin-bottom: 7rem;
+    }
   }
+
+  &__wrapper {
+    position: relative;
+    height: 3rem;
+    width: 60%;
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-bottom: 2px solid var(--main4);
+    outline: none;
+    background-color: var(--main2);
+    font-size: 2rem;
+    font-family: 'Oxanium';
+    transition: 0.1s ease-out;
+
+    &:focus {
+      background-color: var(--main3);
+      color: black;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    font-size: 1.6rem;
+    transition: 0.1s ease-out;
+  }
+
+  &__input:not(:placeholder-shown) {
+    & ~ .upload__label {
+      transform: translateY(calc(150% + 1.5rem));
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--navSize);
+    width: var(--navSize);
+    border: none;
+    border-radius: var(--radius1);
+    outline: none;
+    background-color: var(--main3);
+    transition: 0.1s ease-out;
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  & .icon {
+    height: var(--icon-size);
+    width: var(--icon-size);
+    fill: var(--main4);
+  }
+
+  opacity: 0;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+  --animation-delay: 0.25s;
+}
+
+.appeared {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+}
+
+//TO DELETE !!!!!!!!!!
+.upload {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
 }

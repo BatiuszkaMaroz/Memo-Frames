@@ -32,6 +32,13 @@ registerRoute(postUrl, args => {
 });
 
 registerRoute(
+  new RegExp(/.*fonts\.googleapis\.com.*/),
+  new StaleWhileRevalidate({
+    cacheName: 'MemoFrames-Fonts',
+  }),
+);
+
+registerRoute(
   new RegExp(/.*firebasestorage\.googleapis\.com.*/),
   new StaleWhileRevalidate({
     cacheName: 'MemoFrames-Post_Images',

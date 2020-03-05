@@ -18,7 +18,6 @@
         </div>
       </div>
       <div class="navigation__option op--help">
-        <!-- <div class="navigation__option--close"></div> -->
         <div class="navigation__icon--background">
           <svg class="icon icon-help-circle">
             <use xlink:href="#symbol-defs_icon-help-circle"></use>
@@ -34,12 +33,50 @@
     <!-- MENU OPTIONS BACKDROP -->
     <div class="backdrop"></div>
 
+    <!-- UPLOAD OPTION -->
     <div class="upload">
+      <div class="upload__close close__button">
+        <svg class="icon icon-x">
+          <use xlink:href="#symbol-defs_icon-x"></use>
+        </svg>
+      </div>
       <form class="upload__form">
-        <input type="text" name="name" class="upload__input" />
-        <input type="text" name="location" class="upload__input" />
-        <!-- <button type="submit" class="upload__button" value="Post" /> -->
+        <div class="upload__wrapper">
+          <input
+            type="text"
+            id="input__name"
+            class="upload__input"
+            placeholder="Your Name"
+            name="name"
+            required
+          />
+          <label for="input__name" class="upload__label">Your Name</label>
+        </div>
+        <div class="upload__wrapper">
+          <input
+            type="text"
+            id="input__location"
+            class="upload__input"
+            placeholder="Location"
+            name="location"
+            required
+          />
+          <label for="input__location" class="upload__label">Location</label>
+        </div>
+        <button type="submit" class="upload__button" value="Post">
+          <svg class="icon icon-check">
+            <use xlink:href="#symbol-defs_icon-check"></use>
+          </svg>
+        </button>
       </form>
+    </div>
+
+    <div class="help">
+      <div class="help__close close__button">
+        <svg class="icon icon-x">
+          <use xlink:href="#symbol-defs_icon-x"></use>
+        </svg>
+      </div>
     </div>
 
     <!-- LOGO HEADER  -->
