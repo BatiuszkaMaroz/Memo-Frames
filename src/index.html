@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>MemoFrames</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
   </head>
   <body class="preload">
     <!-- FLOATING NAVIGATION -->
@@ -12,15 +13,15 @@
       <input type="checkbox" id="navigation" class="navigation_check" />
       <div class="navigation__option op--upload">
         <div class="navigation__icon--background">
-          <svg class="icon icon-upload">
-            <use xlink:href="#symbol-defs_icon-upload"></use>
+          <svg class="icon icon-instagram">
+            <use xlink:href="#symbol-defs_icon-instagram"></use>
           </svg>
         </div>
       </div>
       <div class="navigation__option op--help">
         <div class="navigation__icon--background">
-          <svg class="icon icon-help-circle">
-            <use xlink:href="#symbol-defs_icon-help-circle"></use>
+          <svg class="icon icon-settings">
+            <use xlink:href="#symbol-defs_icon-settings"></use>
           </svg>
         </div>
       </div>
@@ -35,10 +36,32 @@
 
     <!-- UPLOAD OPTION -->
     <div class="upload">
+      <header class="header">
+        <img class="header__logo" src="./images/logo-big.png" alt="big logo" />
+      </header>
       <div class="upload__close close__button">
         <svg class="icon icon-x">
           <use xlink:href="#symbol-defs_icon-x"></use>
         </svg>
+      </div>
+      <div class="upload__camera--wrapper">
+        <div class="video-stabilizer">
+          <video class="upload__camera" autoplay></video>
+        </div>
+        <canvas class="upload__canvas"></canvas>
+        <div class="upload__controls">
+          <div class="upload__rotate">
+            <svg class="icon icon-refresh-cw">
+              <use xlink:href="#symbol-defs_icon-refresh-cw"></use>
+            </svg>
+          </div>
+          <div class="upload__shutter">
+            <svg class="icon icon-aperture">
+              <use xlink:href="#symbol-defs_icon-aperture"></use>
+            </svg>
+          </div>
+        </div>
+        <!-- <input type="file" accept="image/*" capture /> -->
       </div>
       <form class="upload__form">
         <div class="upload__wrapper">
@@ -69,6 +92,11 @@
           </svg>
         </button>
       </form>
+    </div>
+
+    <!-- BG-SYNC BANNER -->
+    <div class="bgsync">
+      Your request has been stored and waits for the network connection.
     </div>
 
     <div class="help">

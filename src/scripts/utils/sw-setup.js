@@ -1,15 +1,22 @@
+import { Workbox } from 'workbox-window';
+
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('./sw.js')
-    .then(registration => {
-      console.log('Service Worker registered.');
-    })
-    .catch(err => {
-      console.log('SX');
-      console.log(err);
-      console.log('Service Worker registration failed.');
-    });
+  const wb = new Workbox('./sw.js');
+
+  wb.addEventListener('installed', event => {
+    if (event.isUpdate) {
+      if (confirm(`New content is available!. Click OK to refresh`)) {
+        window.location.reload();
+      }
+    }
+  });
+
+  wb.register();
 }
+
+navigator.serviceWorker.ready.then(sw => {
+  sw.sync.register('workbox-background-sync:MemoFrames-StoredPosts');
+});
 
 window.banner = null;
 

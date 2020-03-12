@@ -8,10 +8,13 @@ export function createDB(storeNames) {
     const db = event.target.result;
 
     storeNames.forEach(store => {
-      db.createObjectStore(store, { keyPath: 'name' });
+      db.createObjectStore(store, { keyPath: 'id' });
     });
   };
 }
+
+//Creating objects stores at first import
+createDB(['fetched-posts']);
 
 export function addData(st, data) {
   return new Promise((resolve, reject) => {

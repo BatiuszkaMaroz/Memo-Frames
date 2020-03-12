@@ -8,19 +8,22 @@
 
 html {
   font-family: 'Oxanium';
-  font-size: clamp(62.5%, 1.5vw, 102.5%);
 
-  // font-size: 62.5%;
-  // @include respond(phone-land) {
-  //   font-size: 72.5%;
-  // }
-  // @include respond(tab-port) {
-  //   font-size: 82.5%;
-  // }
-  // @include respond(tab-land) {
-  //   font-size: 92.5%;
-  // }
-  // @include respond(desktop) {
-  //   font-size: 102.5%;
-  // }
+  font-size: 62.5%;
+  @include respond(phone-land) {
+    font-size: 72.5%;
+  }
+  @include respond(tab-port) {
+    font-size: 82.5%;
+  }
+  @include respond(tab-land) {
+    font-size: 92.5%;
+  }
+  @include respond(desktop) {
+    font-size: 102.5%;
+  }
+
+  @supports (font-size: clamp(62.5%, 1.5vw, 102.5%)) {
+    font-size: clamp(62.5%, 1.5vw, 102.5%);
+  }
 }

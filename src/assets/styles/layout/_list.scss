@@ -5,10 +5,11 @@
     width: 100%;
     padding: 0.5rem;
     list-style: none;
+    line-height: 0;
 
     //GRID
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
   }
 }

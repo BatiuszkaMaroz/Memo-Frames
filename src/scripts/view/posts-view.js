@@ -9,3 +9,10 @@ export function createPost(data) {
 
   list.append(post);
 }
+
+export function deleteAllPosts() {
+  const posts = document.querySelectorAll('li.post');
+  posts.forEach(post => {
+    post.remove();
+  });
+}

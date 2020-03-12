@@ -1,0 +1,33 @@
+.bgsync {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  width: 100%;
+  font-size: 2rem;
+  background-color: var(--main3);
+  text-align: center;
+  transform: translateY(100%);
+  animation-duration: 0.25s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+  z-index: 10000;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}

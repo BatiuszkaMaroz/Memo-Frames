@@ -1,18 +1,23 @@
+import { closeMedia, openMedia } from '../model/camera';
+
 const backdrop = document.querySelector('.backdrop');
 let backdropTimer = null;
 
 //-------------------------UPLOAD-------------------------//
 
-const uploadButton = document.querySelector('.op--upload');
+const uploadOpen = document.querySelector('.op--upload');
 const upload = document.querySelector('.upload');
 const uploadClose = document.querySelector('.upload__close');
 
-uploadButton.addEventListener(
-  'click',
-  openOption.bind(this, upload, uploadButton),
-);
+uploadOpen.addEventListener('click', () => {
+  openMedia();
+  openOption(upload, uploadOpen);
+});
 
-uploadClose.addEventListener('click', closeOption.bind(this, upload));
+uploadClose.addEventListener('click', () => {
+  closeMedia();
+  closeOption(upload);
+});
 
 //-------------------------HELP-------------------------//
 
@@ -53,3 +58,5 @@ function closeOption(element) {
     backdrop.style.display = 'none';
   }, 500);
 }
+
+export const closeUpload = closeOption.bind(this, upload);

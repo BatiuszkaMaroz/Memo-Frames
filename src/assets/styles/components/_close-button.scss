@@ -12,6 +12,7 @@
   outline: none;
   background-color: var(--main3);
   transition: 0.1s ease-out;
+  z-index: 1000;
 
   & .icon {
     height: var(--icon-size);

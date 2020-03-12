@@ -4,7 +4,7 @@
   "description": "A simple app to help you save your memories as a single image frames :)",
   "main": "index.js",
   "scripts": {
-    "wp:prod": "webpack --config webpack.config.js --watch",
+    "wp:prod": "webpack --config webpack.config.js",
     "wp:dev-server": "webpack-dev-server --config webpack.config.js"
   },
   "author": "Batiuszka Maroz",
@@ -32,7 +32,10 @@
   "dependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "core-js": "^3.6.4",
-    "regenerator-runtime": "^0.13.3"
+    "firebase": "^7.9.3",
+    "regenerator-runtime": "^0.13.3",
+    "uniqid": "^5.2.0",
+    "workbox-window": "^5.0.0"
   },
   "browserslist": [
     "> 2%"

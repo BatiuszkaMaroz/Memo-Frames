@@ -1,0 +1,90 @@
+.video-stabilizer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  width: 85%;
+}
+
+@keyframes flip-camera {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.upload {
+  &__camera--wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding-top: calc((var(--navBot) * 2) + var(--navSize));
+  }
+
+  &__camera {
+    display: block;
+    width: 100%;
+    transform: scaleX(-1);
+    animation-duration: 0.25s;
+
+    & .icon {
+      height: var(--icon-size);
+      width: var(--icon-size);
+      fill: var(--main4);
+    }
+  }
+
+  &__controls {
+    margin-top: var(--navBot);
+    display: flex;
+
+    & > *:not(:last-child) {
+      margin-right: var(--navLeft);
+    }
+  }
+
+  &__shutter,
+  &__rotate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--navSize);
+    width: var(--navSize);
+    background-color: var(--main3);
+    border-radius: var(--radius1);
+    transition: 0.1s ease-out;
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  &__canvas {
+    display: none;
+  }
+}
+
+@keyframes snapshot {
+  0% {
+    filter: brightness(1);
+  }
+  30% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(0) invert(1);
+  }
+  70% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}

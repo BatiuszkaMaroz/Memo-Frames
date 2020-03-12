@@ -14,7 +14,7 @@ clientsClaim();
 
 //-----------------------POSTS-FETCH-----------------------//
 
-const postUrl = 'https://memoframes-c2a63.firebaseio.com/posts.json';
+const postUrl = 'https://memoframes-c2a63.firebaseio.com/postsV1.json';
 const postStore = 'fetched-posts';
 
 registerRoute(postUrl, args => {
@@ -53,3 +53,47 @@ setCacheNameDetails({
 
 cleanupOutdatedCaches();
 precacheAndRoute(self.__WB_MANIFEST);
+
+//-----------------------BG-SYNC-----------------------//
+
+import { BackgroundSyncPlugin } from 'workbox-background-sync';
+import { Queue } from 'workbox-background-sync';
+
+const queueName = 'MemoFrames-StoredPosts';
+
+const queue = new Queue(queueName);
+
+self.addEventListener('fetch', event => {
+  if (!self.navigator.onLine) {
+    {
+      const promiseChain = fetch(event.request.clone())
+        .catch(err => {
+          return queue.pushRequest({ request: event.request });
+        })
+        .then(() => {
+          //Send message to app to show bgsync banner
+          if (
+            event.request.url.includes(
+              'us-central1-memoframes-c2a63.cloudfunctions.net/postsFunctions/',
+            )
+          ) {
+            clients.get(event.clientId).then(client => {
+              client.postMessage({ message: 'BG-SYNC' });
+            });
+          }
+        });
+
+      event.waitUntil(promiseChain);
+    }
+  }
+});
+
+// self.addEventListener('fetch', event => {
+//   // Clone the request to ensure it's safe to read when
+//   // adding to the Queue.
+//   const promiseChain = fetch(event.request.clone()).catch(err => {
+//     return queue.pushRequest({ request: event.request });
+//   });
+
+//   event.waitUntil(promiseChain);
+// });
