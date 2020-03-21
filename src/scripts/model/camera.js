@@ -2,9 +2,9 @@ const camera = document.querySelector('.upload__camera');
 const canvas = document.querySelector('.upload__canvas');
 const shutter = document.querySelector('.upload__shutter');
 const rotate = document.querySelector('.upload__rotate');
+const trash = document.querySelector('.upload__trash');
 const stabilizer = document.querySelector('.video-stabilizer');
 let mode = 'user';
-let photoDone = false;
 
 export function openMedia() {
   const constraints = {
@@ -26,21 +26,29 @@ export function openMedia() {
 
   navigator.mediaDevices.getUserMedia(constraints).then(stream => {
     camera.srcObject = stream;
+    rotate.style.pointerEvents = '';
   });
 }
 
 export function closeMedia() {
-  photoDone = false;
+  blob = null;
+  trash.style.display = '';
   camera.srcObject.getVideoTracks().forEach(track => track.stop());
 }
 
-export function isPhotoDone() {
-  return photoDone;
-}
-
 //-------------------------CHANGE-CAMERA-------------------------//
+let rotateTimer = null;
 
 function changeCamera() {
+  rotate.style.pointerEvents = 'none';
+
+  window.clearTimeout(rotateTimer);
+  rotate.querySelector('svg').style.animationName = 'control-rotate';
+  rotateTimer = setTimeout(() => {
+    rotate.querySelector('svg').style.animationName = '';
+  }, 250);
+
+  trash.style.display = '';
   stabilizer.style.minHeight = `${camera.offsetHeight}px`;
 
   if (mode === 'user') {
@@ -90,13 +98,20 @@ function captureImage() {
 
   //Slowing the drawImage because of snapshot animation
   setTimeout(() => {
+    trash.style.display = 'flex';
     context.drawImage(camera, 0, 0);
 
     const image = canvas.toDataURL('image/webp');
     blob = dataURItoBlob(image);
-    photoDone = true;
-  }, 250);
+  }, 100);
 }
+
+trash.addEventListener('click', () => {
+  blob = null;
+
+  trash.style.display = '';
+  camera.play();
+});
 
 shutter.addEventListener('click', captureImage);
 rotate.addEventListener('click', changeCamera);

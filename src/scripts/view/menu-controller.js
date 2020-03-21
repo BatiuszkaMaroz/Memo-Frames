@@ -8,6 +8,7 @@ let backdropTimer = null;
 const uploadOpen = document.querySelector('.op--upload');
 const upload = document.querySelector('.upload');
 const uploadClose = document.querySelector('.upload__close');
+export const uploadButton = document.querySelector('.upload__button');
 
 uploadOpen.addEventListener('click', () => {
   openMedia();
@@ -19,15 +20,18 @@ uploadClose.addEventListener('click', () => {
   closeOption(upload);
 });
 
-//-------------------------HELP-------------------------//
+//-------------------------SETTINGS-------------------------//
 
-const helpButton = document.querySelector('.op--help');
-const help = document.querySelector('.help');
-const helpClose = document.querySelector('.help__close');
+const settingsButton = document.querySelector('.op--settings');
+const settings = document.querySelector('.settings');
+const settingsClose = document.querySelector('.settings__close');
 
-helpButton.addEventListener('click', openOption.bind(this, help, helpButton));
+settingsButton.addEventListener(
+  'click',
+  openOption.bind(this, settings, settingsButton),
+);
 
-helpClose.addEventListener('click', closeOption.bind(this, help));
+settingsClose.addEventListener('click', closeOption.bind(this, settings));
 
 //-------------------------FUNCTIONS-------------------------//
 
@@ -60,3 +64,5 @@ function closeOption(element) {
 }
 
 export const closeUpload = closeOption.bind(this, upload);
+
+//-------------------------COLORS-------------------------//

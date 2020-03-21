@@ -86,7 +86,7 @@
     transition-timing-function: var(--cubic1);
 
     & .icon {
-      fill: white;
+      fill: var(--main1);
       width: var(--icon-size);
       height: var(--icon-size);
     }
@@ -95,7 +95,7 @@
       transition: 0.15s linear;
     }
 
-    &.op--help {
+    &.op--settings {
       transition: 0.15s linear;
     }
   }
@@ -136,6 +136,6 @@
   transform: translateY(-250%);
 }
 
-.navigation_check:checked ~ .navigation__option.op--help {
+.navigation_check:checked ~ .navigation__option.op--settings {
   transform: translateY(-125%);
 }

@@ -18,9 +18,18 @@ navigator.serviceWorker.ready.then(sw => {
   sw.sync.register('workbox-background-sync:MemoFrames-StoredPosts');
 });
 
-window.banner = null;
+let banner = null;
 
 window.addEventListener('beforeinstallprompt', event => {
   event.preventDefault();
   banner = event;
+});
+
+const installButton = document.querySelector('#app-install');
+installButton.addEventListener('click', () => {
+  if (banner) {
+    banner.prompt();
+  } else {
+    alert('Application already installed.');
+  }
 });

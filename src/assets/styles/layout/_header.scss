@@ -18,3 +18,7 @@
     height: 100%;
   }
 }
+
+.dark-mode {
+  filter: brightness(0.1) sepia(1) saturate(1000%) hue-rotate(-110deg);
+}

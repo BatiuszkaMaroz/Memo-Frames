@@ -1,16 +1,18 @@
-import { isPhotoDone, getBlob, closeMedia } from './camera';
-import { reloadPosts } from './posts-model';
-import { closeUpload } from '../view/menu-controller';
+import { getBlob, closeMedia } from './camera';
+import { reloadPosts } from './fetch-posts';
+import { closeUpload, uploadButton } from '../view/menu-controller';
 const uniqid = require('uniqid');
 const form = document.querySelector('.upload__form');
 
-const functionsURL =
-  'https://us-central1-memoframes-c2a63.cloudfunctions.net/postsFunctions/';
-
+//EDITOR
 // const functionsURL =
-//   'http://localhost:5001/memoframes-c2a63/us-central1/postsFunctions/';
+//   'https://us-central1-memoframes-c2a63.cloudfunctions.net/postsFunctions/upload';
+
+const functionsURL =
+  'http://localhost:5001/memoframes-c2a63/us-central1/postsFunctions/upload';
 
 form.addEventListener('submit', event => {
+  uploadButton.style.pointerEvents = 'none';
   event.preventDefault();
 
   //Checks if inputs are empty
@@ -21,14 +23,9 @@ form.addEventListener('submit', event => {
     }
   }
 
-  //Checks if image were done
-  if (!isPhotoDone()) {
-    alert('You must take a photo in order to post it :)');
-    return;
-  }
-
   const imageBlob = getBlob();
 
+  //Checks if photo was taken
   if (!imageBlob) {
     alert('You must take a photo in order to post it :)');
     return;
@@ -51,8 +48,6 @@ form.addEventListener('submit', event => {
     .then(res => {
       if (res.ok) {
         return res.json();
-      } else {
-        throw new Error('No network connection.');
       }
     })
     .then(data => {
@@ -63,29 +58,23 @@ form.addEventListener('submit', event => {
       console.log(err);
     })
     .finally(() => {
-      //
-      //
-      //
-      //
-      //
-      //
-      //TU MOZe BYC BLAD XD
       closeMedia();
       closeUpload();
+      window.scrollTo(0, 0);
+      uploadButton.style.pointerEvents = '';
     });
 });
 
-//Display banner on bgsync store
-const bgsyncBanner = document.querySelector('.bgsync');
+const bgSyncBanner = document.querySelector('.bgsync');
 let bgsyncTimer = null;
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.addEventListener('message', event => {
     if (event.data.message === 'BG-SYNC') {
       window.clearTimeout(bgsyncTimer);
-      bgsyncBanner.style.animationName = 'slide-up';
+      bgSyncBanner.style.animationName = 'slide-up';
       bgsyncTimer = setTimeout(() => {
-        bgsyncBanner.style.animationName = 'slide-down';
+        bgSyncBanner.style.animationName = 'slide-down';
       }, 2000);
     }
   });

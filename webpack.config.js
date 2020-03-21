@@ -2,11 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { InjectManifest } = require('workbox-webpack-plugin');
-const { GenerateSW } = require('workbox-webpack-plugin');
-
 const CopyPlugin = require('copy-webpack-plugin');
 
 const ManifestConfig = {
@@ -15,6 +12,7 @@ const ManifestConfig = {
   description: 'Capture your memories in a frame...',
   background_color: '#22a6b3',
   theme_color: '#22a6b3',
+  orientation: 'portrait-primary',
   crossorigin: 'use-credentials',
   display: 'standalone',
   inject: true,
@@ -53,7 +51,6 @@ module.exports = {
   module: {
     rules: [
       {
-        //Babel polyfill
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
@@ -69,36 +66,19 @@ module.exports = {
         },
       },
       {
-        //Sass loader
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        //SVG loader
         test: /\.svg$/,
         loader: 'svg-sprite-loader',
       },
       {
-        //Images loader
         test: /\.(png|jpg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
           outputPath: 'images',
-          // outputPath: (url, resourcePath, context) => {
-          //   //url is a name of file
-          //   //resourcePath is an absolute path
-          //   //context is THIS folder
-
-          //   // To get relative path you can use
-          //   // const relativePath = path.relative(context, resourcePath);
-
-          //   if (/icon.*\.png$/.test(url)) {
-          //     return;
-          //   }
-
-          //   return `images/${url}`;
-          // },
         },
       },
     ],

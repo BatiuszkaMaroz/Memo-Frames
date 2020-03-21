@@ -2,12 +2,27 @@
   // AUSSIE PALETTE //
   --radius1: 20px;
   --radius2: 5px;
-  --main1: #dff9fb;
-  --main2: #c7ecee;
-  --main3: #7ed6df;
-  --main4: #22a6b3;
-  --red1: #ff7979;
-  --red2: #eb4d4b;
+
+  --light-main1: #dff9fb;
+  --light-main2: #c7ecee;
+  --light-main3: #7ed6df;
+  --light-main4: #22a6b3;
+
+  --dark-main1: #130f40;
+  --dark-main2: #30336b;
+  --dark-main3: #1c165c;
+  --dark-main4: #f0932b;
+
+  --pink-main1: #ffffff;
+  --pink-main2: #eec0d1;
+  --pink-main3: #f7d9e4;
+  --pink-main4: #f0a1bd;
+
+  --main1: var(--light-main1);
+  --main2: var(--light-main2);
+  --main3: var(--light-main3);
+  --main4: var(--light-main4);
+
   --cubic1: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   --navSize: 7rem;
@@ -18,7 +33,7 @@
 
   --navZi: 200;
   --uploadZi: 500;
-  --helpZi: 500;
+  --settingsZi: 500;
   --backdropZi: 300;
   --backdropZiOpening: 100;
 }

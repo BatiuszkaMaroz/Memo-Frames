@@ -8,7 +8,9 @@ const IMAGES = require.context('../assets/images', true, /\.(png|jpg)$/);
 import SYMBOL_DEFS from '../assets/images/symbol-defs.svg';
 
 //Fetch posts
-import './model/posts-model';
+import './model/fetch-posts';
+
+import './view/settings';
 
 //Create database
 import './utils/idb';
@@ -17,7 +19,7 @@ import './utils/idb';
 import './view/menu-controller';
 
 //Upload post
-import './model/upload-model';
+import './model/upload-post';
 
 //Camera access
 import './model/camera';
@@ -29,3 +31,5 @@ window.addEventListener('load', () => {
 
 //ServiceWorker setup
 import './utils/sw-setup';
+
+import './model/likes';

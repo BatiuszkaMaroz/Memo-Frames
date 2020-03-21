@@ -5,7 +5,7 @@
 
   animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
-  width: 85%;
+  width: 100%;
 }
 
 @keyframes flip-camera {
@@ -25,7 +25,7 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    padding-top: calc((var(--navBot) * 2) + var(--navSize));
+    // padding-top: calc((var(--navBot) * 2) + var(--navSize));
   }
 
   &__camera {
@@ -33,17 +33,28 @@
     width: 100%;
     transform: scaleX(-1);
     animation-duration: 0.25s;
+  }
 
-    & .icon {
-      height: var(--icon-size);
-      width: var(--icon-size);
-      fill: var(--main4);
+  &__trash {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 5rem;
+    .icon {
+      stroke: var(--main4);
+      stroke-width: 1px;
+      fill: var(--main1);
     }
   }
 
   &__controls {
     margin-top: var(--navBot);
     display: flex;
+    justify-content: center;
 
     & > *:not(:last-child) {
       margin-right: var(--navLeft);
@@ -63,6 +74,14 @@
 
     &:active {
       transform: scale(1.1);
+    }
+  }
+
+  &__rotate {
+    svg {
+      animation-duration: 0.25s;
+      animation-fill-mode: both;
+      animation-timing-function: ease-in-out;
     }
   }
 
@@ -86,5 +105,14 @@
   }
   100% {
     filter: brightness(1);
+  }
+}
+
+@keyframes control-rotate {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(180deg);
   }
 }

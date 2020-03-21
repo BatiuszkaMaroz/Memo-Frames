@@ -56,12 +56,9 @@ precacheAndRoute(self.__WB_MANIFEST);
 
 //-----------------------BG-SYNC-----------------------//
 
-import { BackgroundSyncPlugin } from 'workbox-background-sync';
 import { Queue } from 'workbox-background-sync';
 
-const queueName = 'MemoFrames-StoredPosts';
-
-const queue = new Queue(queueName);
+const queue = new Queue('MemoFrames-StoredPosts');
 
 self.addEventListener('fetch', event => {
   if (!self.navigator.onLine) {
@@ -87,13 +84,3 @@ self.addEventListener('fetch', event => {
     }
   }
 });
-
-// self.addEventListener('fetch', event => {
-//   // Clone the request to ensure it's safe to read when
-//   // adding to the Queue.
-//   const promiseChain = fetch(event.request.clone()).catch(err => {
-//     return queue.pushRequest({ request: event.request });
-//   });
-
-//   event.waitUntil(promiseChain);
-// });

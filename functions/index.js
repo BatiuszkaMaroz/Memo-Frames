@@ -35,7 +35,7 @@ app.get('*', (req, res) =>
   res.status(200).json({ message: 'MemoFrames API - working' }),
 );
 
-app.post('*', (req, res) => {
+app.post('/upload', (req, res) => {
   //Storage token
   const uuid = uuidv4();
   const busboy = new Busboy({ headers: req.headers });
@@ -93,8 +93,9 @@ app.post('*', (req, res) => {
       },
       (err, uploadedFile) => {
         if (!err) {
-          ref
-            .push({
+          const newPostRef = ref
+            .child(fields.id)
+            .set({
               id: fields.id,
               name: fields.name,
               location: fields.location,
@@ -106,13 +107,18 @@ app.post('*', (req, res) => {
                 '?alt=media&token=' +
                 uuid,
             })
-            // eslint-disable-next-line promise/always-return
+            //eslint-disable-next-line promise/always-return
             .then(() => {
               res.status(201).json({ message: 'Post stored' });
             })
             .catch(err => {
               response.status(500).json({ error: err });
             });
+
+          //Second approach
+          // const postId = newPostRef.key;
+          // await ref.child(postId).update({ postid: postId });
+          // console.log(postId);
         } else {
           console.log(err);
         }
@@ -123,6 +129,62 @@ app.post('*', (req, res) => {
   busboy.end(req.rawBody);
 });
 
+app.post('/like', (req, res) => {
+  const reqPostId = JSON.parse(req.body).id;
+  const postRef = ref.child(reqPostId);
+  let newLikes, oldLikes;
+
+  postRef
+    .child('likes')
+    .once('value', snapshot => {
+      oldLikes = snapshot.val();
+      newLikes = oldLikes + 1;
+    })
+    .then(() => {
+      postRef.update({ likes: newLikes });
+      res.status(201).json({ message: 'Liked it!' });
+      return 0;
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(404).json({ message: 'Post not found!' });
+    });
+});
+
 module.exports.postsFunctions = functions.https.onRequest(app);
 
-//----------------------------------------
+//-------------------LEGACY---------------------
+
+// app.post('/like', (req, res) => {
+//   const reqPostId = JSON.parse(req.body).id;
+//   let POSTID;
+//   let LIKES;
+
+//   ref.on('value', async snapshot => {
+//     const posts = snapshot.val();
+
+//     for (const postId in posts) {
+//       const post = posts[postId];
+
+//       if (post.id === reqPostId) {
+//         let newLikes = post.likes || 0;
+//         newLikes++;
+
+//         LIKES = newLikes;
+//         POSTID = postId;
+
+//         break;
+//       }
+//     }
+//   });
+
+//   setTimeout(() => {
+//     admin
+//       .database()
+//       .ref('postsV1')
+//       .child(POSTID)
+//       .update({ likes: LIKES });
+//   }, 2000);
+
+//   res.status(201).json({ message: 'Liked it!' });
+// });

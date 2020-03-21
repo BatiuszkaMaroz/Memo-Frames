@@ -1,16 +1,12 @@
 .close__button {
-  position: absolute;
-  top: var(--navBot);
-  right: var(--navLeft);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--navSize);
-  width: var(--navSize);
+  height: 100%;
+  width: 5rem;
   border: none;
   border-radius: var(--radius1);
   outline: none;
-  background-color: var(--main3);
   transition: 0.1s ease-out;
   z-index: 1000;
 
