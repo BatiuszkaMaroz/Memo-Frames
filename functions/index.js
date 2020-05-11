@@ -188,3 +188,36 @@ module.exports.postsFunctions = functions.https.onRequest(app);
 
 //   res.status(201).json({ message: 'Liked it!' });
 // });
+
+// if (!err) {
+//   const newPostRef = await ref
+//     // .child(fields.id)
+//     // .set({
+//     .push({
+//       // id: fields.id,
+//       name: fields.name,
+//       location: fields.location,
+//       image:
+//         'https://firebasestorage.googleapis.com/v0/b/' +
+//         bucket.name +
+//         '/o/' +
+//         encodeURIComponent(uploadedFile.name) +
+//         '?alt=media&token=' +
+//         uuid,
+//     });
+//   //eslint-disable-next-line promise/always-return
+//   // .then(() => {
+//   //   res.status(201).json({ message: 'Post stored' });
+//   // })
+//   // .catch(err => {
+//   //   response.status(500).json({ error: err });
+//   // });
+
+//   //Second approach
+//   const postKey = newPostRef.key;
+//   await ref.child(postKey).update({ id: postKey });
+//   res.status(201).json({ message: 'Post stored' });
+//   console.log(postKey);
+// } else {
+//   console.log(err);
+// }

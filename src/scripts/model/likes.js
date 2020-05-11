@@ -44,8 +44,8 @@ async function sendLike(e) {
   stackFree = false;
 
   fetch(
-    'http://localhost:5001/memoframes-c2a63/us-central1/postsFunctions/like',
-    // 'https://us-central1-memoframes-c2a63.cloudfunctions.net/postsFunctions/like',
+    // 'http://localhost:5001/memoframes-c2a63/us-central1/postsFunctions/like',
+    'https://us-central1-memoframes-c2a63.cloudfunctions.net/postsFunctions/like',
     {
       method: 'POST',
       body: JSON.stringify(sendData),

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MemoFrames</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+  <meta name="apple-mobile-web-app-title" content="MemoFrames" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-status-bar-style" content="default" /><meta name="theme-color" content="#22a6b3" /><link rel="apple-touch-startup-image" sizes="1024x1024" href="icons/ios/icon_1024x1024.40e446052b1b61bb581a86a0c8935364.png" /><link rel="apple-touch-icon" sizes="1024x1024" href="icons/ios/icon_1024x1024.e56fa90755b048ce8be08b39dba18e2c.png" /><link rel="apple-touch-icon" sizes="180x180" href="icons/ios/icon_180x180.4295a3f01404efedd81b687058c2abfb.png" /><link rel="apple-touch-icon" sizes="167x167" href="icons/ios/icon_167x167.fa568401d2672d35eec610ab68e95b87.png" /><link rel="apple-touch-icon" sizes="152x152" href="icons/ios/icon_152x152.d6f5b1ee73948efdda6dcc6adbde074e.png" /><link rel="apple-touch-icon" sizes="120x120" href="icons/ios/icon_120x120.af962bbcb057bf43427357241f3a0592.png" /><link rel="manifest" href="manifest.cca95fbc51519a769c3a57492dec47db.json" crossorigin="use-credentials" /><script type="text/javascript" src="scripts/app.js" defer></script></head>
+  <body class="preload">
+    <!-- FLOATING NAVIGATION -->
+    <nav class="navigation">
+      <input type="checkbox" id="navigation" class="navigation_check" />
+      <div class="navigation__option op--upload">
+        <div class="navigation__icon--background">
+          <svg class="icon icon-instagram">
+            <use xlink:href="#symbol-defs_icon-instagram"></use>
+          </svg>
+        </div>
+      </div>
+      <div class="navigation__option op--settings">
+        <div class="navigation__icon--background">
+          <svg class="icon icon-settings">
+            <use xlink:href="#symbol-defs_icon-settings"></use>
+          </svg>
+        </div>
+      </div>
+      <div class="navigation__button">
+        <span class="navigation__hamburger"></span>
+        <label for="navigation"></label>
+      </div>
+    </nav>
+
+    <!-- MENU OPTIONS BACKDROP -->
+    <div class="backdrop"></div>
+
+    <!-- UPLOAD OPTION -->
+    <div class="upload">
+      <div class="upload__header">
+        <p>
+          Add post
+        </p>
+        <div class="upload__close close__button">
+          <svg class="icon icon-x">
+            <use xlink:href="#symbol-defs_icon-x"></use>
+          </svg>
+        </div>
+      </div>
+      <div class="upload__widther">
+        <div class="upload__camera--wrapper">
+          <div class="video-stabilizer">
+            <video class="upload__camera" autoplay></video>
+          </div>
+          <canvas class="upload__canvas"></canvas>
+          <div class="upload__trash">
+            <svg class="icon icon-trash-2">
+              <use xlink:href="#symbol-defs_icon-trash-2"></use>
+            </svg>
+          </div>
+          <!-- <input type="file" accept="image/*" capture /> -->
+        </div>
+        <div class="upload__controls">
+          <div class="upload__rotate">
+            <svg class="icon icon-refresh-cw">
+              <use xlink:href="#symbol-defs_icon-refresh-cw"></use>
+            </svg>
+          </div>
+          <div class="upload__shutter">
+            <svg class="icon icon-aperture">
+              <use xlink:href="#symbol-defs_icon-aperture"></use>
+            </svg>
+          </div>
+        </div>
+        <form class="upload__form">
+          <div class="upload__wrapper">
+            <input
+              type="text"
+              id="input__name"
+              class="upload__input"
+              placeholder="Your Name"
+              name="name"
+              required
+            />
+            <label for="input__name" class="upload__label">Your Name</label>
+          </div>
+          <div class="upload__wrapper">
+            <input
+              type="text"
+              id="input__location"
+              class="upload__input"
+              placeholder="Location"
+              name="location"
+              required
+            />
+            <label for="input__location" class="upload__label">Location</label>
+          </div>
+          <button type="submit" class="upload__button" value="Post">
+            <svg class="icon icon-check">
+              <use xlink:href="#symbol-defs_icon-check"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- BG-SYNC BANNER -->
+    <div class="bgsync">
+      Your request has been stored and waits for the network connection.
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="settings">
+      <div class="settings__header">
+        <p>
+          Settings
+        </p>
+        <div class="settings__close close__button">
+          <svg class="icon icon-x">
+            <use xlink:href="#symbol-defs_icon-x"></use>
+          </svg>
+        </div>
+      </div>
+      <ul class="settings__list">
+        <li class="settings__set settings__colors">
+          <p class="settings__colors__title">Color mode:</p>
+          <ul class="settings__colors__list">
+            <div class="frame"></div>
+            <li class="settings__colors__mode mode--light">Atlantis</li>
+            <li class="settings__colors__mode mode--dark">NightCity</li>
+            <li class="settings__colors__mode mode--pink">PinkPong</li>
+          </ul>
+        </li>
+        <li class="settings__set" id="app-install">
+          <svg class="icon icon-download">
+            <use xlink:href="#symbol-defs_icon-download"></use>
+          </svg>
+          <p>Download our app!</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- LOGO HEADER  -->
+    <header class="header">
+      <img class="header__logo" src="./images/logo-big.png" alt="big logo" />
+    </header>
+
+    <!-- POSTS LIST -->
+    <main>
+      <section class="posts">
+        <ul class="posts__list">
+          <!-- POST TEMPLATE -->
+          <template class="post-template">
+            <li class="post">
+              <img class="post__image" />
+              <div class="post__description">
+                <p></p>
+                <div class="post__likes">
+                  <svg class="icon icon-heart">
+                    <use xlink:href="#symbol-defs_icon-heart"></use>
+                  </svg>
+                  <p id="likes-count"></p>
+                </div>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

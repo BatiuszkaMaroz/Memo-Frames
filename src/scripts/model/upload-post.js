@@ -5,11 +5,11 @@ const uniqid = require('uniqid');
 const form = document.querySelector('.upload__form');
 
 //EDITOR
-// const functionsURL =
-//   'https://us-central1-memoframes-c2a63.cloudfunctions.net/postsFunctions/upload';
-
 const functionsURL =
-  'http://localhost:5001/memoframes-c2a63/us-central1/postsFunctions/upload';
+  'https://us-central1-memoframes-c2a63.cloudfunctions.net/postsFunctions/upload';
+
+// const functionsURL =
+//   'http://localhost:5001/memoframes-c2a63/us-central1/postsFunctions/upload';
 
 form.addEventListener('submit', event => {
   uploadButton.style.pointerEvents = 'none';

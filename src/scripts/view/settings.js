@@ -4,6 +4,12 @@ const buttons = {
   pink: document.querySelector('.mode--pink'),
 };
 
+const colors = {
+  light: '#22a6b3',
+  dark: '#f0932b',
+  pink: '#f0a1bd',
+};
+
 buttons.light.addEventListener('click', setColors.bind(this, 'light'));
 buttons.dark.addEventListener('click', setColors.bind(this, 'dark'));
 buttons.pink.addEventListener('click', setColors.bind(this, 'pink'));
@@ -12,6 +18,7 @@ function setColors(mode, event) {
   darkHeader(mode);
   const curButton = event.target;
   setFrame(curButton);
+  setMeta(mode);
 
   localStorage.setItem('colorMode', mode);
   for (let i = 1; i < 5; i++) {
@@ -33,7 +40,11 @@ let mode = localStorage.getItem('colorMode');
 window.onload = () => {
   if (mode) {
     darkHeader(mode);
+
     setFrame(buttons[mode]);
+
+    setMeta(mode);
+
     for (let i = 1; i < 5; i++) {
       document.documentElement.style.setProperty(
         `--main${i}`,
@@ -63,4 +74,8 @@ function darkHeader(mode) {
 
     header.classList.remove('dark-mode');
   }
+}
+
+function setMeta(mode) {
+  document.querySelector('meta[name=theme-color]').content = colors[mode];
 }

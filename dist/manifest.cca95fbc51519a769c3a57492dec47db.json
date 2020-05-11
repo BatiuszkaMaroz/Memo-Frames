@@ -1,0 +1,87 @@
+{
+  "icons": [
+    {
+      "src": "icons/android/icon_512x512.863f597def34a276127f5703d8fb9402.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_384x384.ee37ba6bdaadcb37ccc16408889607c5.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_256x256.4a2ffdd21a258fdecfa5bd2d8b6a4ff1.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_192x192.74556a696f81a6bdfe3ea40f56d0f0c6.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_144x144.b5765d438c41db6064c00c4dacdd4884.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_96x96.c27f55985ff2e96e333ed8730a4fd08e.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_72x72.e2bd80b612359ef0e2b5b3be94b81731.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_48x48.efd33e5ffdad0993595ace5eebd85146.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android/icon_36x36.94c688aefdb8b851de90ba62b51fd9fb.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ios/icon_1024x1024.40e446052b1b61bb581a86a0c8935364.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ios/icon_1024x1024.e56fa90755b048ce8be08b39dba18e2c.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ios/icon_180x180.4295a3f01404efedd81b687058c2abfb.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ios/icon_167x167.fa568401d2672d35eec610ab68e95b87.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ios/icon_152x152.d6f5b1ee73948efdda6dcc6adbde074e.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ios/icon_120x120.af962bbcb057bf43427357241f3a0592.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    }
+  ],
+  "name": "MemoFrames",
+  "short_name": "MemoFrames",
+  "orientation": "portrait-primary",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Capture your memories in a frame...",
+  "background_color": "#22a6b3",
+  "theme_color": "#22a6b3"
+}
